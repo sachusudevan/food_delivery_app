@@ -1,0 +1,6 @@
+rootProject.name = 'food_delivery_app'
+include ':rn-splash-screen'
+project(':rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/rn-splash-screen/android')
+apply from: '../node_modules/react-native-unimodules/gradle.groovy'; includeUnimodulesProjects()
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
