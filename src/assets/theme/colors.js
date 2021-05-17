@@ -10,4 +10,17 @@ export default {
     lite_black : '#b2bec3',
     Gbutton_primary : '#d63031',
     Gbutton_secondary : '#ff7675',
+    auth_statusbar: '#FFFFFF',
+    // home_statusbar: '#c8171d',
+    home_statusbar: '#FFFFFF',
+
+    TabactiveTintColor : '#FFFFFF',
+    TabinactiveTintColor : '#222222',
+    TabactiveBackgroundColor : '#d63031',
+    TabIconcolor : '#222222',
+    NotificationBadgecolor : '#d63031',
+    SearchBarBorder : '#bdc3c7',
+    SearchBarIcon : '#d63031',
+
+
 };

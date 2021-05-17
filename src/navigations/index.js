@@ -15,7 +15,7 @@ const AppNavContainer = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(isLoggedIn);
   const [authLoaded, setauthLoaded] = useState(false);
-  const [statusBar, setstatusBar] = useState('#c8171d');
+  
 
   const getUser = async () => {
         
@@ -45,7 +45,7 @@ useEffect(() => {
   if(authLoaded)
   {
     SplashScreen.hide();
-    setstatusBar('#FFFFFF');
+    // setstatusBar('#FFFFFF');
   }
   
 }, [authLoaded]);
@@ -59,7 +59,7 @@ useEffect(() => {
   return (
       // <Splash />
         <>
-        <StatusBar backgroundColor={statusBar} />
+        
         
         {authLoaded ? 
           (<NavigationContainer>

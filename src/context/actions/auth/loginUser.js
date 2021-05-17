@@ -17,7 +17,7 @@ export default ({
   console.log('username: >>>', username);
   console.log('password: >>>', password);
   axiosInstance
-    .post('login', {
+    .post('auth/login', {
       password,
       username,
     })

@@ -24,7 +24,7 @@ export default ({
     type: REGISTER_LOADING,
   });
   axiosInstance
-    .post('register', {
+    .post('auth/register', {
       email,
       password,
       username,
