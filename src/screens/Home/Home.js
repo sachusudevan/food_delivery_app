@@ -1,91 +1,75 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Text} from 'react-native';
-import colors from '../../assets/theme/colors';
 import Container from '../../components/common/Container';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import IconBadge from 'react-native-icon-badge';
-import SearchBar from 'react-native-dynamic-search-bar';
 
-const HeaderScreen = () => {
-  return (
-    <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <View>
-          <MaterialCommunityIcons
-            name="briefcase-variant-outline"
-            size={30}
-            color={colors.tabBarIcon}
-          />
-        </View>
-        <View style={{flex: 1, flexDirection: 'column', marginLeft: 10}}>
-          <Text style={{fontSize: 15, fontWeight: 'bold'}}>Work</Text>
-          <Text style={{fontSize: 11}}>Technopark, Trivandrum</Text>
-        </View>
-      </View>
-      <View>
-        <IconBadge
-          MainElement={
-            <Ionicons
-              name="md-notifications-outline"
-              size={30}
-              color={colors.tabBarIcon}
-            />
-          }
-          BadgeElement={
-            <Text style={{color: '#FFFFFF', fontSize: 8}}>99+</Text>
-          }
-          IconBadgeStyle={{
-            height: 15,
-            backgroundColor: colors.NotificationBadgecolor,
-          }}
-          // Hidden={true}
-        />
-      </View>
-    </View>
-  );
-};
+import Category from '../../components/Home/Category';
+import HeaderSearch from '../../components/Home/HeaderSearch';
+import Header from '../../components/Home/Header';
+import getCategories from '../../context/actions/home/getCategories';
+import {GlobalContext} from '../../context/Provider';
+import Loader from '../../components/Home/Loader';
+import PTRView from 'react-native-pull-to-refresh';
 
-const SearchScreen = () => {
-  return (
-    <View style={{marginTop: 10}}>
-      <SearchBar
-        style={{
-          width: '100%',
-          borderWidth: 1,
-          borderColor: colors.SearchBarBorder,
-          borderRadius: 7,
-        }}
-        // darkMode={true}
-        textInputStyle={{
-          color: colors.SearchBarBorder,
-          textDecorationColor: colors.white,
-        }}
-        // fontColor="#c6c6c6"
-        iconColor="#d63031"
-        // shadowColor="#282828"
-        // cancelIconColor="#c6c6c6"
-        // backgroundColor="#353d5e"
-        placeholder="Find a food or restaurent"
-        // onChangeText={(text) => this.filterList(text)}
-        onSearchPress={() => console.log('Search Icon is pressed')}
-        // onClearPress={() => this.filterList("")}
-        onPress={() => alert('onPress')}
-      />
-    </View>
-  );
-};
 
 const Home = () => {
+  const {
+    homeDispatch,
+    homeState: {loading, error},
+  } = useContext(GlobalContext);
+  const {
+    authState: {isLoggedIn},
+  } = useContext(GlobalContext);
+  const data = useContext(GlobalContext);
+  const [categoryList, setcategoryList] = useState({});
+  const [homeLoader, setHomeLoader] = useState(true);
+
+
+  const getCategoryFunction = () => {
+    getCategories()(homeDispatch)(response => {
+      setcategoryList(response);
+    });
+  };
+
+  useEffect(() => {
+    getCategoryFunction();
+  }, []);
+
+
+
+  useEffect(() => {
+      setHomeLoader(loading);
+  }, [loading]);
+
+
+  const  _refresh = () => {
+    return new Promise((resolve) => {
+      setTimeout(()=>{
+        setHomeLoader(true);
+        getCategoryFunction();
+        resolve();
+      }, 2000)
+    });
+  };
+
+  console.log('home loading:>>>.',homeLoader);
+
   return (
-    <View>
-      <Container>
+    <>
+      <PTRView onRefresh={_refresh} >
+
         <View>
-          <HeaderScreen />
-          <SearchScreen />
+          <Container>
+            <View>
+              <Header />
+              <HeaderSearch />
+              {!loading ? (<Category categoryList={categoryList} />) : (<Loader />) }
+
+
+            </View>
+          </Container>
         </View>
-      </Container>
-    </View>
+      </PTRView>
+    </>
   );
 };
 

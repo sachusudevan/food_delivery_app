@@ -7,3 +7,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+
+
+export const HOME_CATEGORY_LOADING = 'LOGIN_LOADING';
+export const HOME_CATEGORY_SUCCESS = 'LOGIN_SUCCESS';
+export const HOME_CATEGORY_FAIL = 'LOGIN_FAIL';

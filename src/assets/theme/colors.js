@@ -21,6 +21,10 @@ export default {
     NotificationBadgecolor : '#d63031',
     SearchBarBorder : '#bdc3c7',
     SearchBarIcon : '#d63031',
+    categoryBorderInactiveColor : '#d63031',
+    categoryBorderactiveColor : '#5b5555',
+    categoryNameInactiveColor : '#d63031',
+    categoryNameactiveColor : '#5b5555',
 
 
 };

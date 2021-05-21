@@ -1,4 +1,6 @@
 rootProject.name = 'food_delivery_app'
+include ':react-native-svg'
+project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
 include ':rn-splash-screen'
 project(':rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/rn-splash-screen/android')
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'; includeUnimodulesProjects()

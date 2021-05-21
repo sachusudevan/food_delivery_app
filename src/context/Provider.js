@@ -1,18 +1,18 @@
 import React , { createContext , useReducer } from 'react';
 import auth from './reducers/auth';
-import foodHome from './reducers/foodHome';
+import home from './reducers/home';
 import authInitialState from './initialsStates/authInitialState';
-import foodHomeInitialState from './initialsStates/foodHomeInitialState';
+import HomeInitialState from './initialsStates/HomeInitialState';
 
 export const GlobalContext = createContext({});
 
 const GlobalProvider=({children}) => {
 
     const [authState, authDispatch] = useReducer(auth, authInitialState);
-    const [foodState, foodHomeDispatch] = useReducer(foodHome, foodHomeInitialState);
+    const [homeState, homeDispatch] = useReducer(home, HomeInitialState);
 
     return (
-        <GlobalContext.Provider value={{ authState, foodState, authDispatch, foodHomeDispatch }} >
+        <GlobalContext.Provider value={{ authState, homeState, authDispatch, homeDispatch }} >
             {children}
         </GlobalContext.Provider>
     );
