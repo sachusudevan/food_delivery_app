@@ -8,7 +8,7 @@ import Animated from 'react-native-reanimated';
 const App = () => {
 
   return (
-    <GlobalProvider>
+    <GlobalProvider >
       <AppNavContainer />
     </GlobalProvider>
   );

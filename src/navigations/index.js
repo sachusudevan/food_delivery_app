@@ -7,6 +7,7 @@ import {GlobalContext} from '../context/Provider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Splash from '../screens/Splash';
 import SplashScreen from 'rn-splash-screen';
+import { View } from 'react-native';
 
 
 const AppNavContainer = () => {
@@ -53,19 +54,17 @@ useEffect(() => {
 
 
 
-  console.log('isLoggedIn :>> ',isLoggedIn); 
-  console.log('isAuthenticated :>> ',isAuthenticated); 
+  // console.log('isLoggedIn :>> ',isLoggedIn); 
+  // console.log('isAuthenticated :>> ',isAuthenticated); 
 
   return (
       // <Splash />
         <>
-        
-        
-        {authLoaded ? 
-          (<NavigationContainer>
-            {isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
-          </NavigationContainer>)
-          : <Splash />}
+          {authLoaded ? 
+            (<NavigationContainer>
+              {isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
+            </NavigationContainer>)
+            : <Splash />}
         </>
   );
 };

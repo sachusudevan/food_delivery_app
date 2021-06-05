@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import Container from '../../components/common/Container';
 
 import Category from '../../components/Home/Category';
@@ -9,18 +9,24 @@ import getCategories from '../../context/actions/home/getCategories';
 import {GlobalContext} from '../../context/Provider';
 import Loader from '../../components/Home/Loader';
 import PTRView from 'react-native-pull-to-refresh';
-
+import Restaurant from '../../components/Home/Restaurant';
+import getShops from '../../context/actions/home/getShops';
+import RestaurantLoader from '../../components/Home/Restaurant/RestaurantLoader';
 
 const Home = () => {
   const {
     homeDispatch,
-    homeState: {loading, error},
+    homeState: {loading, error,shoploading},
   } = useContext(GlobalContext);
+
+
+
   const {
     authState: {isLoggedIn},
   } = useContext(GlobalContext);
   const data = useContext(GlobalContext);
   const [categoryList, setcategoryList] = useState({});
+  const [shopList, setShopList] = useState({});
   const [homeLoader, setHomeLoader] = useState(true);
 
 
@@ -30,8 +36,16 @@ const Home = () => {
     });
   };
 
+
+  const getShopFunction = () => {
+    getShops()(homeDispatch)(response => {
+      setShopList(response);
+    });
+  };
+
   useEffect(() => {
     getCategoryFunction();
+    getShopFunction();
   }, []);
 
 
@@ -46,25 +60,24 @@ const Home = () => {
       setTimeout(()=>{
         setHomeLoader(true);
         getCategoryFunction();
+        getShopFunction();
         resolve();
       }, 2000)
     });
   };
 
-  console.log('home loading:>>>.',homeLoader);
 
   return (
     <>
       <PTRView onRefresh={_refresh} >
 
-        <View>
-          <Container>
+        <View  >
+          <Container >
             <View>
               <Header />
               <HeaderSearch />
               {!loading ? (<Category categoryList={categoryList} />) : (<Loader />) }
-
-
+              <Restaurant shoplist={shopList}/>
             </View>
           </Container>
         </View>

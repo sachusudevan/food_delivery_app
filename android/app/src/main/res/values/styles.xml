@@ -8,4 +8,8 @@
         <item name="android:statusBarColor">#c8171d</item>
     </style>
 
+    <!-- <style name = "LayoutBg">
+        <item name = "android:background">#FFFFFF</item>
+    </style> -->
+
 </resources>

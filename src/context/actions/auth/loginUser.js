@@ -32,7 +32,7 @@ export default ({
       });
     })
     .catch(err => {
-      // console.log('error res :>>> ',err.response.data);
+      // console.log('error res :>>> ',err);
       dispatch({
         type: LOGIN_FAIL,
         payload: err.response

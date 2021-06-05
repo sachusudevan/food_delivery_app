@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 const Location = () => {
     return (
-        <View>
+        <View style={{backgroundColor:'#FFFFFF'}}>
             <Text>Location</Text>
         </View>
     )

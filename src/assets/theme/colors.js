@@ -26,5 +26,7 @@ export default {
     categoryNameInactiveColor : '#d63031',
     categoryNameactiveColor : '#5b5555',
 
+    subfontcolor:'#636e72',
+
 
 };
