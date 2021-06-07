@@ -1,4 +1,4 @@
-import React,{useState}  from 'react';
+import React, {useState}  from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,9 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
-} from 'react-native';
-import {
   ScrollView,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+  TouchableWithoutFeedback
+} from 'react-native';
 import styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../../../assets/theme/colors';

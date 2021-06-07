@@ -76,10 +76,11 @@ const Home = () => {
             <View>
               <Header />
               <HeaderSearch />
-              {!loading ? (<Category categoryList={categoryList} />) : (<Loader />) }
+              {!homeLoader ? (<Category categoryList={categoryList} />) : (<Loader />) }
               <Restaurant shoplist={shopList}/>
             </View>
           </Container>
+          
         </View>
       </PTRView>
     </>
