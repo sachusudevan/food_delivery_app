@@ -1,5 +1,5 @@
 "# food_delivery_app" 
 
 - title: Demo 1
-![Demo](https://github.com/sachusudevan/food_delivery_app/blob/main/screens/Project_06-07_Full%20HD%201080p_MEDIUM_FR30.mp4)
+![Alt Text](https://github.com/sachusudevan/food_delivery_app/blob/main/screens/GIF-210607_224837.gif?raw=true)
 
